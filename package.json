@@ -1,0 +1,62 @@
+{
+  "name": "nextjs-with-typescript",
+  "version": "5.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build && next export",
+    "postinstall": "husky install",
+    "lint": "eslint --ignore-path .gitignore .",
+    "commit": "cz",
+    "test:integration:open": "cypress open",
+    "test:integration": "cypress run --headless"
+  },
+  "dependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "clsx": "^1.1.1",
+    "color": "^4.1.0",
+    "lodash": "^4.17.21",
+    "next": "latest",
+    "nookies": "^2.5.2",
+    "react": "latest",
+    "react-dom": "latest",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/color": "^3.0.2",
+    "@types/cookie": "^0.4.1",
+    "@types/lodash": "^4.14.177",
+    "@types/react": "latest",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "cypress": "^9.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.4.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-config-next": "latest",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "2.5.1",
+    "typescript": "latest"
+  },
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
