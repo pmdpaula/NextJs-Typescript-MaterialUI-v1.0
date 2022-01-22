@@ -3,31 +3,51 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import { useTheme as useThemeNT } from 'next-themes';
 
-import axbLogo from '../../public/AxBladeSoftware_logo_nome_dark.svg';
+import websitePageHOC from '../components/wrappers/WebsitePage/hoc';
 
-const Home: NextPage = () => (
-  <Container maxWidth="lg">
-    <Box
-      sx={{
-        my: 4,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Box sx={{ marginBottom: 6 }}>
-        <Image src={axbLogo} />
+const Home: NextPage = () => {
+  const { resolvedTheme } = useThemeNT(); // useTheme from next-themes
+
+  // eslint-disable-next-line prettier/prettier
+  const logo = resolvedTheme === 'dark'
+      ? '/AxBladeSoftware_logo_nome_light.svg'
+      : '/AxBladeSoftware_logo_nome_dark.svg';
+
+  return (
+    <Container maxWidth="lg">
+      <Box
+        sx={{
+          my: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Box>
+          {/* <Image src={axbLogo} /> */}
+          <Image src={logo} width={400} height={200} />
+        </Box>
+        <Typography variant="h4" component="h1" gutterBottom>
+          AxeBlade - Template base
+        </Typography>
+        <Typography variant="h6" gutterBottom>
+          Modelo base de uma WebApplication com Nextjs 12, Material UI v5
+        </Typography>
       </Box>
-      <Typography variant="h4" component="h1" gutterBottom>
-        AxaBlade - Template base
-      </Typography>
-      <Typography variant="h6" gutterBottom>
-        Modelo base de uma WebApplication com Nextjs 12, Material UI v5
-      </Typography>
-    </Box>
-  </Container>
-);
+    </Container>
+  );
+};
 
-export default Home;
+export default websitePageHOC(Home, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    footerProps: {
+      content: 'Copyright AxeBlade Software',
+    },
+  },
+});

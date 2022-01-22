@@ -74,8 +74,10 @@ module.exports = {
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     indent: 'off',
-    '@typescript-eslint/indent': ['error', 2], // 2 spaces === 1 tab
+    // '@typescript-eslint/indent': ['error', 2], // 2 spaces === 1 tab
+    '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    'react/jsx-no-bind': ['error', { allowFunctions: true }],
   },
 };
