@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
-import { ReactNode, useContext } from 'react';
+import { ReactNode } from 'react';
 // import styled, { ThemeContext } from 'styled-components';
 
 const AxFooterWrapper = styled(Grid)`

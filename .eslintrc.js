@@ -78,6 +78,9 @@ module.exports = {
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
-    'react/jsx-no-bind': ['error', { allowFunctions: true }],
+    'react/jsx-no-bind': [
+      'error',
+      { allowFunctions: true, ignoreDOMComponents: true },
+    ],
   },
 };
