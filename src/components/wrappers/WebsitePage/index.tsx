@@ -1,7 +1,5 @@
 import { Container, Grid, styled, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { useTheme as useThemeNT } from 'next-themes';
-// import { parseCookies } from 'nookies';
 import { ReactNode, useEffect, useState } from 'react';
 
 import { ThemeProps } from '../../../theme/themeLight';
@@ -25,8 +23,6 @@ interface WebsitePageWrapperProps {
   themeMode?: string;
 }
 
-// const { drawerWidth } = globalDefinitions;
-
 const DrawerAnchor = styled('div')({
   display: 'flex',
 });
@@ -48,7 +44,6 @@ const WebsitePageWrapper = ({
   footerProps,
 }: WebsitePageWrapperProps): JSX.Element => {
   const theme = useTheme<ThemeProps>(); // useTheme from MUI
-  const { theme: dataTheme, setTheme } = useThemeNT(); // useTheme from next-themes
 
   const isDrawerCloseble = !useMediaQuery(theme.breakpoints.up('md'));
   // eslint-disable-next-line prettier/prettier
@@ -73,10 +68,6 @@ const WebsitePageWrapper = ({
       setOpenDrawer(isDrawerCloseble ? open : true);
     };
 
-  const toggleTheme = () => {
-    setTheme(dataTheme === 'light' ? 'dark' : 'light');
-  };
-
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -98,8 +89,6 @@ const WebsitePageWrapper = ({
               open={openDrawer}
               // eslint-disable-next-line react/jsx-no-bind
               toggleOpenDrawer={toggleOpenDrawer}
-              // eslint-disable-next-line react/jsx-no-bind
-              toggleTheme={toggleTheme}
             />
           </div>
           <AxDrawer

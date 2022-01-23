@@ -3,23 +3,18 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ExitToAppOutlinedIcon from '@mui/icons-material/ExitToAppOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
-// import { makeStyles, Theme } from '@mui/material';
-// import AppBar from '@mui/material/AppBar';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import AppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Hidden from '@mui/material/Hidden';
 import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
-// import { makeStyles } from '@mui/material/styles';
-import Switch from '@mui/material/Switch';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-// import clsx from 'clsx';
 import Image from 'next/image';
 import { useTheme as useThemeNT } from 'next-themes';
 
 import globalDefinitions from '../../../config/globalDefinitions';
+import ThemeSwitch from '../../commons/ThemeSwitch/ThemeSwitch';
 import Link from '../Link';
 import AppBarRightSmallScreen from './AppBarRightSmallScreen';
 
@@ -28,10 +23,6 @@ const { drawerWidth } = globalDefinitions;
 interface AxAppBarProps {
   open: boolean;
   toggleOpenDrawer: () => void;
-  // handleDrawerClose: () => void;
-  // isDrawerCloseble: boolean;
-  // eslint-disable-next-line no-unused-vars
-  toggleTheme: (event: any) => void;
 }
 
 interface AppBarProps extends MuiAppBarProps {
@@ -39,7 +30,7 @@ interface AppBarProps extends MuiAppBarProps {
   isDrawerCloseble?: boolean;
 }
 
-const AppBarWrapper = styled(MuiAppBar, {
+const AppBarWrapper = styled(AppBar, {
   shouldForwardProp: (prop: any) => prop !== 'open',
 })<AppBarProps>(({ theme, open, isDrawerCloseble }) => ({
   zIndex: theme.zIndex.drawer + 1,
@@ -54,14 +45,12 @@ const AppBarWrapper = styled(MuiAppBar, {
     }),
 }));
 
-const AxAppBar = ({
-  open,
-  toggleOpenDrawer,
-  toggleTheme,
-}: AxAppBarProps): JSX.Element => {
-  const { resolvedTheme } = useThemeNT(); // useTheme from next-themes
+const AxAppBar = ({ open, toggleOpenDrawer }: AxAppBarProps): JSX.Element => {
+  const { theme: dataTheme, setTheme, resolvedTheme } = useThemeNT(); // useTheme from next-themes
 
-  // const { signOut } = useContext(AuthContext);
+  function toggleTheme(): void {
+    setTheme(dataTheme === 'light' ? 'dark' : 'light');
+  }
 
   // eslint-disable-next-line prettier/prettier
   const logo = resolvedTheme === 'dark'
@@ -69,19 +58,22 @@ const AxAppBar = ({
       : '/AxBladeSoftware_logo_nome_dark.svg';
 
   return (
-    <AppBarWrapper position="absolute" open={open}>
+    <AppBarWrapper
+      position="absolute"
+      open={open}
+      color="primary"
+      enableColorOnDark
+    >
       <Toolbar sx={{ paddingRight: 2 }}>
-        <Hidden mdUp>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label={open ? 'close drawer' : 'open drawer'}
-            onClick={toggleOpenDrawer}
-            sx={{ marginRight: '1rem' }}
-          >
-            {open ? <ChevronLeftIcon /> : <MenuIcon />}
-          </IconButton>
-        </Hidden>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label={open ? 'close drawer' : 'open drawer'}
+          onClick={toggleOpenDrawer}
+          sx={{ marginRight: '1rem', display: { xs: 'block', md: 'none' } }}
+        >
+          {open ? <ChevronLeftIcon /> : <MenuIcon />}
+        </IconButton>
         <Box
           sx={{ flexGrow: 1 }}
           display="flex"
@@ -97,40 +89,23 @@ const AxAppBar = ({
             DashBoard Admin
           </Typography>
         </Box>
-        <Hidden mdUp>
-          <AppBarRightSmallScreen toggleTheme={toggleTheme} />
-        </Hidden>
-        <Hidden smDown>
-          <Box>
-            <Link href="/profile">
-              <Tooltip title="Perfil" arrow placement="bottom">
-                <IconButton color="inherit">
-                  <AssignmentIndIcon />
-                </IconButton>
-              </Tooltip>
-            </Link>
-            <Tooltip
-              title={
-                resolvedTheme === 'dark'
-                  ? 'Mudar para tema claro'
-                  : 'Mudar para tema escuro'
-              }
-              arrow
-              placement="bottom"
-            >
-              <Switch
-                checked={resolvedTheme === 'dark'}
-                onChange={toggleTheme}
-              />
-            </Tooltip>
-            <Tooltip title="Sair" arrow placement="bottom">
+        <AppBarRightSmallScreen toggleTheme={toggleTheme} />
+        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Link href="/profile">
+            <Tooltip title="Perfil" arrow placement="bottom">
               <IconButton color="inherit">
-                <ExitToAppOutlinedIcon />
+                <AssignmentIndIcon />
               </IconButton>
             </Tooltip>
-            {/* <Typography>sair</Typography> */}
-          </Box>
-        </Hidden>
+          </Link>
+          <ThemeSwitch toggleTheme={toggleTheme} />
+          <Tooltip title="Sair" arrow placement="bottom">
+            <IconButton color="inherit">
+              <ExitToAppOutlinedIcon />
+            </IconButton>
+          </Tooltip>
+          {/* <Typography>sair</Typography> */}
+        </Box>
       </Toolbar>
     </AppBarWrapper>
   );
