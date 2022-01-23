@@ -1,6 +1,6 @@
 // import { createMuiTheme } from '@mui/material/styles';
 import { createTheme } from '@mui/material';
-import { red } from '@mui/material/colors';
+import { grey, red } from '@mui/material/colors';
 
 // Create a theme instance.
 const themeLight = createTheme({
@@ -23,10 +23,9 @@ const themeLight = createTheme({
     warning: {
       main: '#FECC17',
     },
-    // background: {
-    //   default: '#fff',
-    //   paper: '#f5f5f5',
-    // },
+    backgroundDrawer: {
+      main: grey[100],
+    },
   },
 });
 

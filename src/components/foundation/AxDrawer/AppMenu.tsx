@@ -17,7 +17,7 @@ const AppMenu: React.FC = () => {
       // className={classes.appMenu}
       dense={dense}
       disablePadding
-      sx={{ width: '100%', marginTop: '0.8rem' }}
+      sx={{ width: '100%', marginTop: '4rem' }}
     >
       {menutItems.map((item) => (
         // const id = `key_${index}`;

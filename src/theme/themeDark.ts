@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { grey } from '@mui/material/colors';
 
 // Create a theme instance.
 const themeDark = createTheme({
@@ -19,6 +20,9 @@ const themeDark = createTheme({
     },
     warning: {
       main: '#FECC17',
+    },
+    backgroundDrawer: {
+      main: grey[900],
     },
   },
 });

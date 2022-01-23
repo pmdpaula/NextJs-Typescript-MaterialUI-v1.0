@@ -8,6 +8,9 @@ declare module '@mui/material/styles' {
       main: string;
       contrastText: string;
     };
+    backgroundDrawer: {
+      main: string;
+    };
   }
   // allow configuration using `createTheme`
   // eslint-disable-next-line no-unused-vars
@@ -16,8 +19,17 @@ declare module '@mui/material/styles' {
       main?: string;
       contrastText?: string;
     };
+    backgroundDrawer?: {
+      main: string;
+    };
   }
 }
+
+// interface SimplePaletteColorOptions {
+//   backgroundDrawer?: {
+//     main: string;
+//   };
+// }
 
 export const overridesTheme = createTheme({
   components: {
