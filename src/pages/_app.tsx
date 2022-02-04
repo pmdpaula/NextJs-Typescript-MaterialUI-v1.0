@@ -1,3 +1,5 @@
+import './app/login.css';
+
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppProps } from 'next/app';

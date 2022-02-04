@@ -35,3 +35,6 @@ yarn-error.log*
 
 # Cypress Tests
 *.spec.*
+
+# Jest Tests
+*.test.*
