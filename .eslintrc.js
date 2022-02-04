@@ -80,7 +80,11 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'react/jsx-no-bind': [
       'error',
-      { allowFunctions: true, ignoreDOMComponents: true },
+      {
+        allowFunctions: true,
+        allowArrowFunctions: true,
+        ignoreDOMComponents: true,
+      },
     ],
   },
 };
