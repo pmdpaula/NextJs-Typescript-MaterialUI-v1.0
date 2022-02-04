@@ -91,7 +91,7 @@ const AxAppBar = ({ open, toggleOpenDrawer }: AxAppBarProps): JSX.Element => {
         </Box>
         <AppBarRightSmallScreen toggleTheme={toggleTheme} />
         <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-          <Link href="/profile">
+          <Link href="/app/profile">
             <Tooltip title="Perfil" arrow placement="bottom">
               <IconButton color="inherit">
                 <AssignmentIndIcon />

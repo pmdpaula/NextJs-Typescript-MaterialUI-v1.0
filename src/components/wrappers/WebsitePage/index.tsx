@@ -81,7 +81,7 @@ const WebsitePageWrapper = ({
   return (
     <>
       <SEO {...seoProps} />
-
+      {/* TODO: verificar Login children */}
       {seoProps?.headTitle !== 'Login' ? (
         <DrawerAnchor key="drawerAnchor">
           <div>
@@ -114,7 +114,7 @@ const WebsitePageWrapper = ({
           </AxMain>
         </DrawerAnchor>
       ) : (
-        { children }
+        <section>{children}</section>
       )}
     </>
   );
