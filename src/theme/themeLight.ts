@@ -2,8 +2,11 @@
 import { createTheme } from '@mui/material';
 import { grey, red } from '@mui/material/colors';
 
+import { overridesTheme } from '.';
+
 // Create a theme instance.
 const themeLight = createTheme({
+  ...overridesTheme,
   palette: {
     mode: 'light',
     primary: {

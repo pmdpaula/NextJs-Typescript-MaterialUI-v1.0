@@ -6,6 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
@@ -23,6 +24,7 @@ const { drawerWidth } = globalDefinitions;
 interface AxAppBarProps {
   open: boolean;
   toggleOpenDrawer: () => void;
+  hasDrawer?: boolean;
 }
 
 interface AppBarProps extends MuiAppBarProps {
@@ -45,7 +47,11 @@ const AppBarWrapper = styled(AppBar, {
     }),
 }));
 
-const AxAppBar = ({ open, toggleOpenDrawer }: AxAppBarProps): JSX.Element => {
+const AxAppBar = ({
+  open,
+  toggleOpenDrawer,
+  hasDrawer,
+}: AxAppBarProps): JSX.Element => {
   const { theme: dataTheme, setTheme, resolvedTheme } = useThemeNT(); // useTheme from next-themes
 
   function toggleTheme(): void {
@@ -64,48 +70,64 @@ const AxAppBar = ({ open, toggleOpenDrawer }: AxAppBarProps): JSX.Element => {
       color="primary"
       enableColorOnDark
     >
-      <Toolbar sx={{ paddingRight: 2 }}>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label={open ? 'close drawer' : 'open drawer'}
-          onClick={toggleOpenDrawer}
-          sx={{ marginRight: '1rem', display: { xs: 'block', md: 'none' } }}
-        >
-          {open ? <ChevronLeftIcon /> : <MenuIcon />}
-        </IconButton>
-        <Box
+      <Toolbar>
+        <Stack
           sx={{ flexGrow: 1 }}
-          display="flex"
-          justifyContent="start"
+          direction="row"
+          justifyContent="space-around"
           alignItems="center"
         >
-          <Image src={logo} width={120} height={40} />
-          <Typography
-            component="h2"
-            noWrap
-            style={{ marginLeft: '1.5rem', fontWeight: 600 }}
+          {hasDrawer && (
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label={open ? 'close drawer' : 'open drawer'}
+              onClick={toggleOpenDrawer}
+              sx={{ marginRight: '1rem', display: { xs: 'block', md: 'none' } }}
+            >
+              {open ? <ChevronLeftIcon /> : <MenuIcon />}
+            </IconButton>
+          )}
+
+          <Stack
+            sx={{ flexGrow: 1 }}
+            direction="row"
+            justifyContent="flex-start"
+            alignItems="center"
           >
-            DashBoard Admin
-          </Typography>
-        </Box>
-        <AppBarRightSmallScreen toggleTheme={toggleTheme} />
-        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-          <Link href="/app/profile">
-            <Tooltip title="Perfil" arrow placement="bottom">
+            <Image src={logo} width={120} height={40} />
+            <Typography
+              component="h2"
+              noWrap
+              style={{ marginLeft: '1.5rem', fontWeight: 600 }}
+            >
+              DashBoard Admin
+            </Typography>
+          </Stack>
+
+          <Box
+            sx={{
+              display: { xs: 'none', md: 'block' },
+              pointerEvents: { xs: 'none', md: 'auto' },
+            }}
+          >
+            <Link href="/app/profile">
+              <Tooltip title="Perfil" arrow placement="bottom">
+                <IconButton color="inherit">
+                  <AssignmentIndIcon />
+                </IconButton>
+              </Tooltip>
+            </Link>
+            <ThemeSwitch toggleTheme={toggleTheme} />
+            <Tooltip title="Sair" arrow placement="bottom">
               <IconButton color="inherit">
-                <AssignmentIndIcon />
+                <ExitToAppOutlinedIcon />
               </IconButton>
             </Tooltip>
-          </Link>
-          <ThemeSwitch toggleTheme={toggleTheme} />
-          <Tooltip title="Sair" arrow placement="bottom">
-            <IconButton color="inherit">
-              <ExitToAppOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-          {/* <Typography>sair</Typography> */}
-        </Box>
+          </Box>
+
+          <AppBarRightSmallScreen toggleTheme={toggleTheme} />
+        </Stack>
       </Toolbar>
     </AppBarWrapper>
   );

@@ -30,10 +30,10 @@ const Home: NextPage = () => {
           {/* <Image src={axbLogo} /> */}
           <Image src={logo} width={400} height={200} />
         </Box>
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography align="center" variant="h4" component="h1" gutterBottom>
           AxeBlade - Template base
         </Typography>
-        <Typography variant="h6" gutterBottom>
+        <Typography align="center" component="p" variant="h6" gutterBottom>
           Modelo base de uma WebApplication com Nextjs 12, Material UI v5
         </Typography>
       </Box>
@@ -46,6 +46,8 @@ export default websitePageHOC(Home, {
     seoProps: {
       headTitle: 'Home',
     },
+    hasDrawer: true,
+    hasAppBar: true,
     footerProps: {
       content: 'Copyright AxeBlade Software',
     },

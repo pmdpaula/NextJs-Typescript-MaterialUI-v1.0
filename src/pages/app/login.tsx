@@ -82,6 +82,8 @@ export default websitePageHOC(PageLogin, {
     seoProps: {
       headTitle: 'Login',
     },
+    hasDrawer: false,
+    hasAppBar: false,
   },
 });
 

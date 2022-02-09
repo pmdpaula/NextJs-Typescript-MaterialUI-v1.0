@@ -16,5 +16,7 @@ export default websitePageHOC(PageTables, {
     seoProps: {
       headTitle: pageName,
     },
+    hasDrawer: true,
+    hasAppBar: true,
   },
 });

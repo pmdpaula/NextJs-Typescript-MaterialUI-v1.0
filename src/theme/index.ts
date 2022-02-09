@@ -1,4 +1,3 @@
-import { red } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
@@ -31,37 +30,43 @@ declare module '@mui/material/styles' {
 //   };
 // }
 
+// export const overridesTheme = createTheme({
+//   components: {
+//     MuiCssBaseline: {
+//       styleOverrides: {
+//         html: {
+//           // WebkitFontSmoothing: 'auto',
+//           height: '100%',
+//           fontFamily: "'Roboto', sans-serif",
+//         },
+//         body: {
+//           overflowY: 'scroll',
+//         },
+//       },
+//     },
+//   },
+// });
+
 export const overridesTheme = createTheme({
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        html: {
-          // WebkitFontSmoothing: 'auto',
-          height: '100%',
-          fontFamily: "'Roboto', sans-serif",
-        },
-        body: {
-          overflowY: 'scroll',
-        },
-      },
-    },
+  typography: {
+    fontFamily: ['Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(','),
   },
 });
 
 // Create a theme instance.
-const theme = createTheme({
-  ...overridesTheme,
-  palette: {
-    primary: {
-      main: '#55dd11',
-    },
-    secondary: {
-      main: '#19857b',
-    },
-    error: {
-      main: red.A400,
-    },
-  },
-});
+// const theme = createTheme({
+//   ...overridesTheme,
+//   palette: {
+//     primary: {
+//       main: '#55dd11',
+//     },
+//     secondary: {
+//       main: '#19857b',
+//     },
+//     error: {
+//       main: red.A400,
+//     },
+//   },
+// });
 
-export default theme;
+// export default theme;

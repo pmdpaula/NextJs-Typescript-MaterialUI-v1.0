@@ -16,5 +16,7 @@ export default websitePageHOC(PageClonePJe, {
     seoProps: {
       headTitle: pageName,
     },
+    hasDrawer: true,
+    hasAppBar: true,
   },
 });

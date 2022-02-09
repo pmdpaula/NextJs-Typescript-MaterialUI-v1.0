@@ -16,5 +16,7 @@ export default websitePageHOC(General, {
     seoProps: {
       headTitle: pageName,
     },
+    hasDrawer: true,
+    hasAppBar: true,
   },
 });

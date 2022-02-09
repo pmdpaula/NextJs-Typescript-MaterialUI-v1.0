@@ -29,5 +29,7 @@ export default websitePageHOC(Page404, {
     seoProps: {
       headTitle: '404',
     },
+    hasDrawer: true,
+    hasAppBar: true,
   },
 });

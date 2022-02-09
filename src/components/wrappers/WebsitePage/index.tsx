@@ -1,27 +1,13 @@
 import { Container, Grid, styled, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ThemeProps } from '../../../theme/themeLight';
 import AxAppBar from '../../foundation/AxAppBar/AxAppBar';
 import AxDrawer from '../../foundation/AxDrawer/AxDrawer';
 import AxFooter from '../../foundation/AxFooter/AxFooter';
 import SEO from '../../foundation/SEO';
-
-interface WebsitePageWrapperProps {
-  themeProps: {
-    isDark: boolean;
-  };
-  seoProps?: { headTitle: string };
-  menuProps?: {
-    display: boolean;
-  };
-  footerProps?: {
-    content?: ReactNode;
-  };
-  children: ReactNode;
-  themeMode?: string;
-}
+import { WebsitePageWrapperProps } from './index.d';
 
 const DrawerAnchor = styled('div')({
   display: 'flex',
@@ -40,6 +26,8 @@ const AppBarSpacer = styled('div')(({ theme }: any) => theme.mixins.toolbar);
 const WebsitePageWrapper = ({
   children,
   seoProps,
+  hasDrawer,
+  hasAppBar,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   footerProps,
 }: WebsitePageWrapperProps): JSX.Element => {
@@ -85,18 +73,25 @@ const WebsitePageWrapper = ({
       {seoProps?.headTitle !== 'Login' ? (
         <DrawerAnchor key="drawerAnchor">
           <div>
-            <AxAppBar
-              open={openDrawer}
-              // eslint-disable-next-line react/jsx-no-bind
-              toggleOpenDrawer={toggleOpenDrawer}
-            />
+            {hasAppBar && (
+              <AxAppBar
+                open={openDrawer}
+                // eslint-disable-next-line react/jsx-no-bind
+                toggleOpenDrawer={toggleOpenDrawer}
+                hasDrawer={hasDrawer}
+              />
+            )}
           </div>
-          <AxDrawer
-            open={openDrawer}
-            toggleOpenDrawer={toggleOpenDrawer}
-            onClose={toggleDrawer(false)}
-            variant={isDrawerCloseble ? 'temporary' : 'permanent'}
-          />
+
+          {hasDrawer && (
+            <AxDrawer
+              open={openDrawer}
+              toggleOpenDrawer={toggleOpenDrawer}
+              onClose={toggleDrawer(false)}
+              variant={isDrawerCloseble ? 'temporary' : 'permanent'}
+            />
+          )}
+
           {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
           <AxMain onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
             <AppBarSpacer />

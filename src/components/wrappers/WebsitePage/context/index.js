@@ -12,7 +12,7 @@ export const WebsitePageContext = createContext();
 export const WrapperProvider = ({ children }) => {
   const { resolvedTheme } = useTheme();
   const [currentTheme, setCurrentTheme] = useState(themeDark);
-  const [signIn, setSignIn] = useState(false);
+  // const [signIn, setSignIn] = useState(false);
 
   // const providerValue = useMemo(
   //   () => ({ resolvedTheme, currentTheme, setCurrentTheme, signIn, setSignIn }),
