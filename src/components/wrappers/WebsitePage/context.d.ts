@@ -2,9 +2,9 @@
 import { Theme } from '@mui/system';
 
 export interface websitePageContextProps {
-  // isDark: boolean;
-  // setIsDark: (isDark) => void;
-  resolvedTheme: Theme;
+  resolvedTheme?: string;
   currentTheme: Theme;
-  setCurrentTheme: () => void;
+  setCurrentTheme: Dispatch<SetStateAction<Theme>>;
+  headTitle: string;
+  setHeadTitle: Dispatch<SetStateAction<Theme>>;
 }

@@ -7,12 +7,13 @@ export interface WebsitePageWrapperProps {
   seoProps?: { headTitle: string };
   hasDrawer: boolean;
   hasAppBar: boolean;
+  hasFooter: boolean;
   menuProps?: {
     display: boolean;
   };
-  footerProps?: {
-    content?: ReactNode;
-  };
+  // footerProps?: {
+  //   content?: ReactNode;
+  // };
   children: ReactNode;
   themeMode?: string;
 }

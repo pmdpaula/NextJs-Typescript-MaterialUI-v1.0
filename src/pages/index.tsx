@@ -48,8 +48,6 @@ export default websitePageHOC(Home, {
     },
     hasDrawer: true,
     hasAppBar: true,
-    footerProps: {
-      content: 'Copyright AxeBlade Software',
-    },
+    hasFooter: true,
   },
 });

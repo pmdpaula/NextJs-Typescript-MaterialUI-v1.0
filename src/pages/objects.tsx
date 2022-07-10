@@ -18,5 +18,6 @@ export default websitePageHOC(PageObjects, {
     },
     hasDrawer: true,
     hasAppBar: true,
+    hasFooter: false,
   },
 });

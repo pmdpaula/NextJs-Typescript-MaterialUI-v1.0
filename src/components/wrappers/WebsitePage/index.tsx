@@ -1,12 +1,15 @@
-import { Container, Grid, styled, useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
+// import Grid from '@mui/material/Grid';
+import { useMediaQuery } from '@mui/material';
+import Container from '@mui/material/Container';
+import { styled, useTheme } from '@mui/material/styles';
+import { useContext, useEffect, useState } from 'react';
 
 import { ThemeProps } from '../../../theme/themeLight';
 import AxAppBar from '../../foundation/AxAppBar/AxAppBar';
 import AxDrawer from '../../foundation/AxDrawer/AxDrawer';
 import AxFooter from '../../foundation/AxFooter/AxFooter';
 import SEO from '../../foundation/SEO';
+import { WebsitePageContext } from './context/index';
 import { WebsitePageWrapperProps } from './index.d';
 
 const DrawerAnchor = styled('div')({
@@ -26,12 +29,12 @@ const AppBarSpacer = styled('div')(({ theme }: any) => theme.mixins.toolbar);
 const WebsitePageWrapper = ({
   children,
   seoProps,
-  hasDrawer,
-  hasAppBar,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  footerProps,
+  hasDrawer = true,
+  hasAppBar = true,
+  hasFooter = false,
 }: WebsitePageWrapperProps): JSX.Element => {
   const theme = useTheme<ThemeProps>(); // useTheme from MUI
+  const websitePageContext = useContext(WebsitePageContext);
 
   const isDrawerCloseble = !useMediaQuery(theme.breakpoints.up('md'));
   // eslint-disable-next-line prettier/prettier
@@ -59,6 +62,10 @@ const WebsitePageWrapper = ({
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    websitePageContext?.setHeadTitle(seoProps?.headTitle || '');
+  }, [seoProps?.headTitle, websitePageContext]);
 
   useEffect(() => {
     setOpenDrawer(!isDrawerCloseble);
@@ -94,18 +101,13 @@ const WebsitePageWrapper = ({
 
           {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
           <AxMain onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
-            <AppBarSpacer />
-            <Container maxWidth="lg">
-              <Grid>
-                {/* Page content */}
-                {children}
-              </Grid>
-            </Container>
-            {footerProps ? (
+            {hasAppBar && <AppBarSpacer />}
+            <Container maxWidth="lg">{children}</Container>
+            {hasFooter && (
               <Container style={{ marginTop: 'auto' }}>
-                <AxFooter content={footerProps.content} />
+                <AxFooter />
               </Container>
-            ) : null}
+            )}
           </AxMain>
         </DrawerAnchor>
       ) : (

@@ -3,24 +3,29 @@ import { useTheme } from 'next-themes';
 import { createContext, useMemo, useState } from 'react';
 
 import themeDark from '../../../../theme/themeDark';
-// import themeLight from '../../../../theme/themeLight';
-
 // import { AuthProvider } from './AuthContext';
+import { websitePageContextProps } from '../context.d';
 
-export const WebsitePageContext = createContext();
+export const WebsitePageContext = createContext<websitePageContextProps | null>(
+  null,
+);
 
-export const WrapperProvider = ({ children }) => {
+export const WrapperProvider = ({ children }: any) => {
   const { resolvedTheme } = useTheme();
   const [currentTheme, setCurrentTheme] = useState(themeDark);
+  // eslint-disable-next-line space-infix-ops, prettier/prettier, no-undef
+  const [headTitle, setHeadTitle] = useState<string>('');
   // const [signIn, setSignIn] = useState(false);
 
-  // const providerValue = useMemo(
-  //   () => ({ resolvedTheme, currentTheme, setCurrentTheme, signIn, setSignIn }),
-  //   [currentTheme, resolvedTheme, signIn],
-  // );
   const providerValue = useMemo(
-    () => ({ resolvedTheme, currentTheme, setCurrentTheme }),
-    [currentTheme, resolvedTheme],
+    () => ({
+      resolvedTheme,
+      currentTheme,
+      setCurrentTheme,
+      headTitle,
+      setHeadTitle,
+    }),
+    [currentTheme, headTitle, resolvedTheme, setHeadTitle],
   );
 
   return (

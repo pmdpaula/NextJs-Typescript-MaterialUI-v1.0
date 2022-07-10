@@ -2,8 +2,6 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
-import { ReactNode } from 'react';
-// import styled, { ThemeContext } from 'styled-components';
 
 const AxFooterWrapper = styled(Grid)`
   display: flex;
@@ -22,11 +20,11 @@ const AxFooterBox = styled(Paper)`
   align-items: center;
 `;
 
-interface AxFooterProps {
-  content: ReactNode;
-}
+// interface AxFooterProps {
+//   content: ReactNode;
+// }
 
-const AxFooter = ({ content }: AxFooterProps): JSX.Element => (
+const AxFooter = (): JSX.Element => (
   // const theme = useContext(ThemeContext);
 
   <AxFooterWrapper>
@@ -36,9 +34,10 @@ const AxFooter = ({ content }: AxFooterProps): JSX.Element => (
         color="secondary.contrastText"
         // style={{ color: palette.secondary.contrastText }}
       >
-        {content}
+        Copyright AxeBlade Software
       </Typography>
     </AxFooterBox>
   </AxFooterWrapper>
 );
+
 export default AxFooter;
