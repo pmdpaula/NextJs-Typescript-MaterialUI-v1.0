@@ -24,49 +24,8 @@ declare module '@mui/material/styles' {
   }
 }
 
-// interface SimplePaletteColorOptions {
-//   backgroundDrawer?: {
-//     main: string;
-//   };
-// }
-
-// export const overridesTheme = createTheme({
-//   components: {
-//     MuiCssBaseline: {
-//       styleOverrides: {
-//         html: {
-//           // WebkitFontSmoothing: 'auto',
-//           height: '100%',
-//           fontFamily: "'Roboto', sans-serif",
-//         },
-//         body: {
-//           overflowY: 'scroll',
-//         },
-//       },
-//     },
-//   },
-// });
-
 export const overridesTheme = createTheme({
   typography: {
     fontFamily: ['Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(','),
   },
 });
-
-// Create a theme instance.
-// const theme = createTheme({
-//   ...overridesTheme,
-//   palette: {
-//     primary: {
-//       main: '#55dd11',
-//     },
-//     secondary: {
-//       main: '#19857b',
-//     },
-//     error: {
-//       main: red.A400,
-//     },
-//   },
-// });
-
-// export default theme;
