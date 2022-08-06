@@ -2,7 +2,7 @@ import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { Children } from 'react';
 
-import theme from '../theme';
+// import theme from '../theme';
 import createEmotionCache from '../utils/createEmotionCache';
 
 export default class MyDocument extends Document {
@@ -80,7 +80,7 @@ MyDocument.getInitialProps = async (ctx) => {
       data-emotion={`${style.key} ${style.ids.join(' ')}`}
       key={style.key}
       // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: style.css }}
+      // dangerouslySetInnerHTML={{ __html: style.css }}
     />
   ));
 
