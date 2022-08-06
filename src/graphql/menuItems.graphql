@@ -1,0 +1,10 @@
+query getMenuItems {
+  menuItems {
+    ident,
+    name,
+    link,
+    Icon,
+    access,
+    disabled,
+  }
+}
