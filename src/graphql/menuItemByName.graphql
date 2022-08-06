@@ -1,0 +1,17 @@
+query menuItemByName($name: String!) {
+  menuItem(name: $name) {
+    ident,
+    name,
+    link,
+    Icon,
+    access,
+    disabled,
+    items {
+      ident,
+      name,
+      link,
+      Icon,
+      access,
+      disabled,
+  }
+}}

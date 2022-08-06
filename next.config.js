@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const redirects = require('./config/redirects');
 
@@ -9,5 +10,12 @@ module.exports = {
   },
   env: {
     // NODE_ENV: 'development',
+  },
+  webpack: (config) => {
+    if (!config.experiments) {
+      config.experiments = {};
+    }
+    config.experiments.topLevelAwait = true;
+    return config;
   },
 };
