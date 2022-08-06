@@ -11,11 +11,4 @@ module.exports = {
   env: {
     // NODE_ENV: 'development',
   },
-  webpack: (config) => {
-    if (!config.experiments) {
-      config.experiments = {};
-    }
-    config.experiments.topLevelAwait = true;
-    return config;
-  },
 };

@@ -7,10 +7,6 @@ import TableChartIcon from '@mui/icons-material/TableChart';
 import WatchIcon from '@mui/icons-material/Watch';
 import { ElementType } from 'react';
 
-// import ReactHtmlParser from 'react-html-parser';
-import { HttpClient } from '../infra/http/HttpClient';
-// import { ReactNode } from 'react';
-
 export interface menutItemsProps {
   ident: string;
   link?: string;
@@ -20,39 +16,6 @@ export interface menutItemsProps {
   disabled: boolean;
   items?: menutItemsProps[];
 }
-
-// eslint-disable-next-line operator-linebreak
-// const TOKEN =
-// eslint-disable-next-line max-len
-//   'lsdioNCSD2$DA3TY%K8ASLKAUCASDN_UCVXKN9u0jefOILc!PSDUFlkjsdfnvasdf908uq4ihrfcq vn9h87098890fas984asdfadgs-gsd54fgasd';
-// const url = 'http://infra-apl-01.trt1.jus.br:4000/menuItems';
-
-// const getMenuItems = () => {
-//   HttpClient(url, {
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Bearer ${TOKEN}`,
-//     },
-//     // refresh: true,
-//   })
-//     .then(async (response) => {
-//       console.log(response);
-//       return response;
-//     })
-//     .then(async (response) => {
-//       const converted = await response.map((item: any) => {
-//         const Icon = ReactHtmlParser(item.Icon);
-
-//         return { ...response, Icon };
-//         // const Icon = item.Icon
-//       });
-//       // if (!response.ok) throw new Error('Usuário não autorizado.');
-
-//       // console.log(response.body.data);
-
-//       return converted;
-//     });
-// };
 
 export const menutItems: menutItemsProps[] = [
   {

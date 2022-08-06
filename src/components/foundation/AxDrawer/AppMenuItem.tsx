@@ -33,7 +33,6 @@ const AppMenuItem: React.FC<AppMenuItemProps> = ({ dense, ...props }) => {
 
   const MenuItemRoot = (
     <AxAppMenuItemComponent
-      // className={clsx(classes.menuItem, selectedItem)}
       link={disabled ? null : link}
       onClick={handleClick}
       disabled={disabled}

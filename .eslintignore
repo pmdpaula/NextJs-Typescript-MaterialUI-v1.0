@@ -38,9 +38,3 @@ yarn-error.log*
 
 # Jest Tests
 *.test.*
-
-# Generated GraphQL files
-/src/generated/*
-
-# GraphQL files
-/src/graphql/*.graphql
