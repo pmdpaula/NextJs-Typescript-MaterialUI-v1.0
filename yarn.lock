@@ -3395,11 +3395,14 @@ camelize@^1.0.0:
   integrity sha1-FkpUg+Yw+kMh5a8HAg5TGDGyYJs=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001286:
   version "1.0.30001364"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001364.tgz"
   integrity sha512-9O0xzV3wVyX0SlegIQ6knz+okhBB5pE0PC40MNdwcipjwpxoUEHL24uJ+gG42cgklPjfO5ZjZPme9FTSN3QT2Q==
 =======
+=======
+>>>>>>> 86a9ba6beabbb245d07fcceedde7d73c59754e9f
 caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001286, caniuse-lite@^1.0.30001366:
   version "1.0.30001370"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001370.tgz"
@@ -3413,6 +3416,9 @@ capital-case@^1.0.4:
     no-case "^3.0.4"
     tslib "^2.0.3"
     upper-case-first "^2.0.2"
+<<<<<<< HEAD
+>>>>>>> 86a9ba6beabbb245d07fcceedde7d73c59754e9f
+=======
 >>>>>>> 86a9ba6beabbb245d07fcceedde7d73c59754e9f
 
 caseless@~0.12.0:
